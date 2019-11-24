@@ -1,40 +1,103 @@
-<nav class="navbar my-navbar navbar-expand-md">
+<!-- Navbar  -->
+<header class="navbar my-navbar navbar-expand-md">
+    <!-- Branding -->
     <a class="navbar-brand" href="#">
-        <img >
-    
+        <img src="assets/Icons/icon_disco_100.png">
     </a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
         aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 
+    <!-- Items -->
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+                <a class="nav-link my-nav-link-large">Erasmus Party App</a>
+            </li>
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                <a class="nav-link my-nav-link" href="#">City<span class="sr-only">(current)</span></a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="#">Link</a>
+                <a class="nav-link my-nav-link" href="#">About</a>
             </li>
             <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">
-                    Dropdown
+                <a class="nav-link  my-nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Profile
                 </a>
                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
+                    <a class="dropdown-item" href="#">Become your City's Host!</a>
+                    <a class="dropdown-item" href="#">Edit Profile</a>
+
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                <a class="nav-link my-nav-link">Login</a>
             </li>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
     </div>
-</nav>
+</header>
+
+<!-- Main Components -->
+<div class="container-fluid">
+    <div class="row flex-xl-nowrap">
+        <!-- Venues-List-->
+        <div class="col-sm-12 col-md-7">
+            VenuesList
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col-md-2">
+                        <img src="assets/Icons/icon_beer_96.png" class="card-img" alt="bar icon">
+                    </div>
+                    <div class="col-md-10">
+                        <div class="card-body">
+                            <h5 class="card-title">Venue Name</h5>
+                            <p class="card-text">Rating Stars </p>
+                            <button class="btn btn-primary">I'm going!</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Attend Venue -->
+        <div class="col-sm-0 col-md-5">
+            AttendVenue
+            <!-- Description -->
+            <div class="card mb-3">
+                <div class="row no-gutters">
+                    <div class="col">
+                        <h3 class="card-title"> Clicked Venue Name</h3>
+                    </div>
+                    <div class="col">
+                        <img src="assets/Icons/icon_beer_96.png" class="card-img" alt="bar icon">
+                    </div>
+                    <div class="card-body">
+                        <div class="row no-gutters">
+                            <p class="card-text">
+                                mo: 00:00 - 24:00
+                                tu: 00:00 - 24:00
+                                we: 00:00 - 24:00
+                                th: 00:00 - 24:00
+                                fr: 00:00 - 24:00
+                                sa: 00:00 - 24:00
+                                so: 00:00 - 24:00
+                            </p>
+                        </div>
+                        <!-- Nationalities Cards -->
+                        <div class="container">
+                            <div class="row no-gutters">
+                                <div class="card mb-3">
+                                    <img src="assets/Icons/icon_beer_96.png" alt="">
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
