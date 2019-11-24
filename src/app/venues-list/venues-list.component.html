@@ -1,1 +1,5 @@
-<p>venues-list works!</p>
+<!-- Venues-List-->
+   <app-venue *ngFor = "let day_venue of day_venues | async"
+    [venue]="day_venue"></app-venue>
+
+

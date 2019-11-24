@@ -11,6 +11,7 @@ import { AppComponent } from './app.component';
 import { environment } from 'src/environments/environment';
 import { VenuesListComponent } from './venues-list/venues-list.component';
 import { AttendPartyComponent } from './attend-party/attend-party.component';
+import { VenueComponent } from './venues-list/venue/venue.component';
 
 
 
@@ -18,7 +19,8 @@ import { AttendPartyComponent } from './attend-party/attend-party.component';
   declarations: [
     AppComponent,
     VenuesListComponent,
-    AttendPartyComponent
+    AttendPartyComponent,
+    VenueComponent
   ],
   imports: [
     BrowserModule,

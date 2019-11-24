@@ -1,0 +1,26 @@
+<div class="card mb-3">
+    <div class="row no-gutters">
+        <div class="col-md-2">
+            <img src="{{ imagePath }}" class="card-img" alt="bar icon">
+        </div>
+        <div class="col-md-10">
+            <div class="row">
+                <div class="col-md-5">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ venue.venueName }}</h4>
+                        <p class="card-text">Google Rating: {{ venue.rating  }}</p>
+                        <button class="btn btn-primary">I'm going!</button>
+                    </div>
+                </div>
+                <div class="col-md-3"></div>
+                <div class="col-md-4">
+                    <div class="card-body" style="text-align: center;">
+                        <h5 >{{ venue.numberOfAttendees }}</h5>
+                        <p>Guests</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
