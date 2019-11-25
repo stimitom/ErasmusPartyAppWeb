@@ -12,6 +12,7 @@ import { environment } from 'src/environments/environment';
 import { VenuesListComponent } from './venues-list/venues-list.component';
 import { AttendPartyComponent } from './attend-party/attend-party.component';
 import { VenueComponent } from './venues-list/venue/venue.component';
+import { VenueService } from './shared/venue.service';
 
 
 
@@ -30,7 +31,7 @@ import { VenueComponent } from './venues-list/venue/venue.component';
     AngularFirestoreModule, 
     AngularFireAuthModule
   ],
-  providers: [],
+  providers: [VenueService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

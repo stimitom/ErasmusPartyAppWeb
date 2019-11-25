@@ -3,27 +3,19 @@
     <div class="container">
         <div class="row no-gutters">
             <div class="col">
-                <h3 class="card-title"> Clicked Venue Name</h3>
+                <h3 class="card-title">{{ venueToShow.venueName }}</h3>
             </div>
             <div class="col-md-2">
-                <img src="assets/Icons/icon_beer_96.png" class="card-img" alt="bar icon">
+                <img src="{{ imagePath }}" class="card-img" alt="bar icon">
             </div>
         </div>
         <div class="row no-gutters">
             <div class="col">
-                <p class="card-text">
-                    mo: 00:00 - 24:00<br />
-                    tu: 00:00 - 24:00<br />
-                    we: 00:00 - 24:00<br />
-                    th: 00:00 - 24:00<br />
-                    fr: 00:00 - 24:00<br />
-                    sa: 00:00 - 24:00<br />
-                    so: 00:00 - 24:00
-                </p>
+                <p class="card-text" *ngFor="let weekday of venueToShow.openingHours">{{ weekday }}<br/></p>
             </div>
             <div class="col">
                 <p class="card-text">
-                    Address: Laisves...
+                  {{ venueToShow.address }}
                 </p>
             </div>
         </div>
