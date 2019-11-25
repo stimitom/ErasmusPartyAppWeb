@@ -13,9 +13,11 @@ export class NationalityCardComponent implements OnInit {
 
   ngOnInit() {
     this.setFlagIcon();
+    console.log(this.flagIconPath);
+    
   }
 
-  setFlagIcon() {
+  setFlagIcon() {    
     switch (this.nationality) {
       case 'Afghanistan': { this.flagIconPath = 'assets/Icons/Resized_Flags/flag_afghanistan.png'; break; }
       case 'Aland Islands': { this.flagIconPath = 'assets/Icons/Resized_Flags/flag_aland_islands.png'; break; }
@@ -254,7 +256,7 @@ export class NationalityCardComponent implements OnInit {
       case 'Yemen': { this.flagIconPath = 'assets/Icons/Resized_Flags/flag_yemen.png'; break; }
       case 'Zambia': { this.flagIconPath = 'assets/Icons/Resized_Flags/flag_zambia.png'; break; }
       case 'Zimbabwe': { this.flagIconPath = 'assets/Icons/Resized_Flags/flag_zimbabwe.png'; break; }
-      default: {this.flagIconPath = 'assets/Icons/Resized_Flags/flag_united_nations.png'; break; } 
+      default: { this.flagIconPath = 'assets/Icons/Resized_Flags/flag_united_nations.png'; break; }
 
     }
   }
