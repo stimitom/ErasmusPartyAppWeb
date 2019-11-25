@@ -1,3 +1,9 @@
 .flag-img{ 
-    padding: 3px;
+    padding: 5px;
+}
+.my-nationality-text{ 
+    padding-top: 9px;
+    padding-bottom: 5px;
+    padding-left: 15px;
+    font-size: large;
 }
