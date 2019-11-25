@@ -13,6 +13,7 @@ import { VenuesListComponent } from './venues-list/venues-list.component';
 import { AttendPartyComponent } from './attend-party/attend-party.component';
 import { VenueComponent } from './venues-list/venue/venue.component';
 import { VenueService } from './shared/venue.service';
+import { NationalityCardComponent } from './attend-party/nationality-card/nationality-card.component';
 
 
 
@@ -21,7 +22,8 @@ import { VenueService } from './shared/venue.service';
     AppComponent,
     VenuesListComponent,
     AttendPartyComponent,
-    VenueComponent
+    VenueComponent,
+    NationalityCardComponent
   ],
   imports: [
     BrowserModule,

@@ -21,15 +21,9 @@
         </div>
         <hr>
         <!-- Nationalities Cards -->
-        <div class="card mb-3">
-            <div class="row no-gutters">
-                <div class="col-md-1">
-                    <img src="assets/Icons/Resized_Flags/flag_austria.png" class="card-img" alt="flag icon">
-                </div>
-                <div class="col-md-11">
-                    <p class="card-text my-nationality-text">Austria</p>
-                </div>
-            </div>
-        </div>
+        <app-nationality-card 
+        *ngFor="let nationalityEl of nationalitiesList"
+        [nationality]="nationalityEl"
+        ></app-nationality-card>
     </div>
 </div>

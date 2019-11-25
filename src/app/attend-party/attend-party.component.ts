@@ -8,7 +8,8 @@ import { Venue } from '../shared/venue.model';
 })
 export class AttendPartyComponent implements OnInit,OnChanges {
   @Input() venueToShow: Venue; 
-  imagePath:string; 
+  imagePath: string; 
+  nationalitiesList: string[] = []; 
 
   constructor() { }
 
@@ -17,6 +18,9 @@ export class AttendPartyComponent implements OnInit,OnChanges {
 
   ngOnChanges(){ 
     this.setImagePath()  
+    this.setNationaltiesList(); 
+    console.log(this.nationalitiesList);
+    
   }
 
   setImagePath() {
@@ -26,6 +30,16 @@ export class AttendPartyComponent implements OnInit,OnChanges {
       this.imagePath = "assets/Icons/icon_dancing2_96.png"
     } else {
       this.imagePath = "assets/Icons/icon_disco2_100.png"
+    }
+  }
+
+  setNationaltiesList(){ 
+    const list: Map<string,string> = this.venueToShow.usersNationalitiesMap; 
+    this.nationalitiesList.length = 0;  
+    for(let nationality of Object.values(list)){ 
+      if(!this.nationalitiesList.includes(nationality)){ 
+        this.nationalitiesList.push(nationality);
+      }
     }
   }
 
