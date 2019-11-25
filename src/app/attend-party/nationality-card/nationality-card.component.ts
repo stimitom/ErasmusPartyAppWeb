@@ -13,8 +13,7 @@ export class NationalityCardComponent implements OnInit {
 
   ngOnInit() {
     this.setFlagIcon();
-    console.log(this.flagIconPath);
-    
+    console.log(this.flagIconPath);     
   }
 
   setFlagIcon() {    
