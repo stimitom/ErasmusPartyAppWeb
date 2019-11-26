@@ -11,16 +11,20 @@
         </div>
         <div class="row no-gutters">
             <div class="col">
-                <p class="card-text" *ngFor="let weekday of venueToShow.openingHours">{{ weekday }}<br/></p>
+                <p class="card-text" *ngFor="let weekday of venueToShow.openingHours">{{ weekday }}</p>
             </div>
-            <div class="col">
+            <div class="col text-center">
                 <p class="card-text">
                   {{ venueToShow.address }}
                 </p>
+                <button style="margin-top: 50%;" class="btn btn-primary btn-lg">I'm Going!</button>
             </div>
         </div>
         <hr>
-        <h4 *ngIf="venueToShow.numberOfAttendees !== 0; else noGuestsYet">Guests from:</h4>
+        <div style="text-align: center;" *ngIf="venueToShow.numberOfAttendees !== 0; else noGuestsYet">
+            <h4 >{{ venueToShow.numberOfAttendees }} </h4>
+            <h5>Guests from:</h5> 
+        </div>
         <ng-template #noGuestsYet>
             <h5>Be the first one to attend!<br/></h5>
         </ng-template>

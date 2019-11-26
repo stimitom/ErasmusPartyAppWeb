@@ -14,6 +14,7 @@ import { AttendPartyComponent } from './attend-party/attend-party.component';
 import { VenueComponent } from './venues-list/venue/venue.component';
 import { VenueService } from './shared/venue.service';
 import { NationalityCardComponent } from './attend-party/nationality-card/nationality-card.component';
+import { HeaderComponent } from './header/header.component';
 
 
 
@@ -23,7 +24,8 @@ import { NationalityCardComponent } from './attend-party/nationality-card/nation
     VenuesListComponent,
     AttendPartyComponent,
     VenueComponent,
-    NationalityCardComponent
+    NationalityCardComponent,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
