@@ -19,8 +19,6 @@ export class AttendPartyComponent implements OnInit,OnChanges {
   ngOnChanges(){ 
     this.setImagePath()  
     this.setNationaltiesList(); 
-    console.log(this.nationalitiesList);
-    
   }
 
   setImagePath() {
@@ -39,7 +37,7 @@ export class AttendPartyComponent implements OnInit,OnChanges {
     for(let nationality of Object.values(list)){ 
       if(!this.nationalitiesList.includes(nationality)){ 
         this.nationalitiesList.push(nationality);
-      }
+       }
     }
   }
 
