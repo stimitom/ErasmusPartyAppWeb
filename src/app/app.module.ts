@@ -15,6 +15,9 @@ import { VenueComponent } from './venues-list/venue/venue.component';
 import { VenueService } from './shared/venue.service';
 import { NationalityCardComponent } from './attend-party/nationality-card/nationality-card.component';
 import { HeaderComponent } from './header/header.component';
+import { RegistrationComponent } from './auth/registration/registration.component';
+import { LoginComponent } from './auth/login/login.component';
+import { HomeComponent } from './home/home.component';
 
 
 
@@ -25,7 +28,10 @@ import { HeaderComponent } from './header/header.component';
     AttendPartyComponent,
     VenueComponent,
     NationalityCardComponent,
-    HeaderComponent
+    HeaderComponent,
+    RegistrationComponent,
+    LoginComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
