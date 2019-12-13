@@ -1,1 +1,14 @@
-<p>home works!</p>
+<div class="row flex-xl-nowrap">
+<!-- Venues List -->
+<div class="col-sm-12 col-md-7">
+    <app-venues-list></app-venues-list>
+</div>
+<!-- Attend Party -->
+<div class="col-sm-0 col-md-5">
+    <app-attend-party *ngIf="venueSelected; else infoText" [venueToShow]="venueSelected"></app-attend-party>
+    <ng-template #infoText>
+        <h5>Please select a bar or nightclub!</h5>
+    </ng-template>
+</div>
+</div>
+

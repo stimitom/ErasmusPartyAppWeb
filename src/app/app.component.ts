@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Venue } from './shared/venue.model';
-import { VenueService } from './shared/venue.service';
+
 
 @Component({
   selector: 'app-root',
@@ -9,17 +8,10 @@ import { VenueService } from './shared/venue.service';
 })
 export class AppComponent implements OnInit {
   title = 'ErasmusPartyAppWeb';
-  venueSelected:Venue; 
 
-  constructor(private venueService:VenueService){}
+  constructor(){}
   
   ngOnInit(){ 
-     this.venueService.venueSelected
-     .subscribe(
-       (venue:Venue) => { 
-         this.venueSelected = venue; 
-       }
-     )
   }
 
 }
