@@ -18,7 +18,6 @@ export class User{
         this.nationality = nationality;
         this.email = email;
         this.city = city;
-        
         this.listnames = new Array<string>();
         this.counterpos0 = 0; 
         this.counterpos1 = 0; 
