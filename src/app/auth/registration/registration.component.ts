@@ -22,10 +22,12 @@ export class RegistrationComponent implements OnInit {
   createUser(frm){ 
     this.auth.createUser(frm.value); 
   }
+  cityList: string[] = [
+    "Kaunas,LT"
+  ];
 
-  
 
-  nationaltiesList: string[] = [
+  nationalitiesList: string[] = [
     "Afghanistan",
     "Aland Islands",
     "Albania",

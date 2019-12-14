@@ -3,6 +3,7 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
+import { User } from './user.model';
 
 @Injectable({ 
     providedIn: 'root'
@@ -11,7 +12,7 @@ export class AuthService {
 
     private eventAuthError = new BehaviorSubject<string>(""); 
     eventAuthError$ = this.eventAuthError.asObservable(); 
-    newUser: any;
+    newUserPartly: any;
 
     constructor(private afAuth: AngularFireAuth, private db: AngularFirestore, private router: Router) { }
 
@@ -19,7 +20,7 @@ export class AuthService {
     createUser(user) {
         this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
             .then(userCredential => {
-                this.newUser = user;
+                this.newUserPartly = user; 
                 console.log(userCredential);
 
                 userCredential.user.updateProfile({
@@ -38,12 +39,18 @@ export class AuthService {
 
     insertUserData(userCredential: firebase.auth.UserCredential) {
         return this.db.doc(`users/${userCredential.user.uid}`).set({
-            userid: `${userCredential.user.uid}`,
-            email: this.newUser.email,
-            username: this.newUser.username,
-            nationality: this.newUser.nationality,
-            city: this.newUser.city
-        })
+            userid: `${userCredential.user.uid}`, 
+            username: this.newUserPartly.username, 
+            email:this.newUserPartly.email,
+            nationality: this.newUserPartly.nationality, 
+            city: this.newUserPartly.city,
+
+            listnames: new Array<string>(),
+            counterpos0: 0,
+            counterpos1: 0,
+            counterpos2: 0,
+            countermapping: new Map<string, string>()
+        });
     }
 }
 

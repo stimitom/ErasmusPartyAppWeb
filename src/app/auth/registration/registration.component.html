@@ -14,27 +14,35 @@
                     <div class="form-group">
                         <input ngModel #email="ngModel" required name="email" type="email" class="form-control" aria-describedby="emailHelp" placeholder="Email">
                     </div>
-                    <div class="form-group">
-                        <input ngModel #userName="ngModel" required type="text" class="form-control" name="username" placeholder="Username">
+                    <div [hidden]="email.valid || email.pristine" class="alert alert-danger">
+                        Email is required
                     </div>
                     <div class="form-group">
-                        <select class="custom-select d-block w-100" (change)="changeNationality($event)" name="nationality" placeholer="Select your nationality">  
-                            <option *ngFor="let nationality of nationalitiesList" [ngValue]="nationality">{{ nationality }}</option> 
+                        <input ngModel #username="ngModel" required type="email" class="form-control" name="username" placeholder="Username">
+                        <div [hidden]="username.valid || username.pristine" class="alert alert-danger">
+                        Username is required
+                    </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <select ngModel #nationality="ngModel" class="form-control"  name="nationality" required>  
+                            <option value="" selected disabled>Select your Nationality</option>
+                            <option *ngFor="let nationality of nationalitiesList" [value]="nationality">{{ nationality }}</option> 
                         </select>
                     </div>
                     <div class="form-group">
-                        <select class="form-control" name="inputNationality">
+                        <select ngModel #city="ngModel" class="form-control" name="city" required>
                             <option value="" selected disabled>Select your City</option>
-                            <option [value]="Kaunas_LT">Kaunas,LT</option>
+                            <option *ngFor="let city of cityList" [value]="city">{{ city }}</option>
                         </select>
                     </div>
                     <div class="form-group">
-                        <input ngModel #password="ngModel" type="password" class="form-control" name="inputPassword" aria-describedby="passwordHelp" placeholder="Password">
+                        <input ngModel #password="ngModel" type="password" class="form-control" name="password" aria-describedby="passwordHelp" placeholder="Password">
                     </div>
                     <div class="form-group">
                         <input type="password" class="form-control" name="inputConfirmPassword" aria-describedby="passwordHelp" placeholder="Confirm Password">
                     </div>
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <button class="btn btn-primary" type="submit" [disabled]="!userRegForm.form.valid">Sign Up</button>
                 </form>
             </div>
         </div>
