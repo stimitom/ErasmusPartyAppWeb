@@ -18,6 +18,7 @@ import { HeaderComponent } from './header/header.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
+import { AuthService } from './shared/auth.service';
 
 
 
