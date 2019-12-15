@@ -44,36 +44,11 @@ export class AuthService {
             email:this.newUserPartly.email,
             nationality: this.newUserPartly.nationality, 
             city: this.newUserPartly.city,
-
-            listnames: new Array<string>(),
+            listnames: [],
             counterpos0: 0,
             counterpos1: 0,
             counterpos2: 0,
-            countermapping: new Map<string, string>()
+            countermapping: {}
         });
     }
 }
-
-
-
-/*
-  user$: Observable<any>;
-
-    constructor(private afAuth: AngularFireAuth, private db: AngularFirestore, private router: Router){
-        this.user$ = this.afAuth.authState.pipe(
-            switchMap( (user) => {
-                if(user){
-                    return this.db.doc(`users/${user.uid}`).valueChanges();
-                }else{
-                    return of(null);
-                }
-            })
-        );
-    }
-
-    signInEmail(user){
-        this.afAuth.auth.signInWithEmailAndPassword(user.email,user.password).catch(function(error) {
-            // Handle Errors here.
-        })
-    }
- */
