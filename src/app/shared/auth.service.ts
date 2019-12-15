@@ -16,6 +16,9 @@ export class AuthService {
 
     constructor(private afAuth: AngularFireAuth, private db: AngularFirestore, private router: Router) { }
 
+    getUserState(){ 
+        return this.afAuth.authState;
+    }
 
     createUser(user) {
         this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)
@@ -50,5 +53,21 @@ export class AuthService {
             counterpos2: 0,
             countermapping: {}
         });
+    }
+
+    login(email:string, password:string){ 
+         this.afAuth.auth.signInWithEmailAndPassword(email, password)
+         .catch( error => { 
+             this.eventAuthError.next(error); 
+         })
+         .then(userCredential => { 
+             if (userCredential) {
+                 this.router.navigate(['/home']);
+             }
+         })
+    }
+
+    logout(){ 
+        return this.afAuth.auth.signOut(); 
     }
 }

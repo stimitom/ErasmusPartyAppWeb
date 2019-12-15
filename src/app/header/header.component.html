@@ -35,7 +35,8 @@
                 </div>
             </li>
             <li class="nav-item">
-                <a class="nav-link my-nav-link">Login</a>
+                <a *ngIf="!user" (click)="login()" class="nav-link my-nav-link">Log In</a>
+                <a *ngIf="user" (click)="logout()" class="nav-link my-nav-link">Log Out</a>
             </li>
         </ul>
     </div>
