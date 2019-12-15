@@ -16,7 +16,10 @@ export class LoginComponent implements OnInit {
     this.auth.eventAuthError$.subscribe(data =>{ 
       this.authError = data; 
     })
+  }
 
+  goToRegister(){ 
+    this.router.navigate(['/register']);
   }
 
   loginUser(frm){ 
