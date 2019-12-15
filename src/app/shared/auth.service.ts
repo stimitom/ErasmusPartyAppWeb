@@ -3,7 +3,6 @@ import { AngularFireAuth } from '@angular/fire/auth';
 import { AngularFirestore } from '@angular/fire/firestore';
 import { Router } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
-import { User } from './user.model';
 
 @Injectable({ 
     providedIn: 'root'
@@ -19,6 +18,8 @@ export class AuthService {
     getUserState(){ 
         return this.afAuth.authState;
     }
+
+   
 
     createUser(user) {
         this.afAuth.auth.createUserWithEmailAndPassword(user.email, user.password)

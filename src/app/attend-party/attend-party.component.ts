@@ -1,5 +1,7 @@
 import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Venue } from '../shared/venue.model';
+import { AuthService } from 'src/app/shared/auth.service';
+import { AngularFireAuth } from '@angular/fire/auth';
 
 @Component({
   selector: 'app-attend-party',
@@ -10,15 +12,40 @@ export class AttendPartyComponent implements OnInit,OnChanges {
   @Input() venueToShow: Venue; 
   imagePath: string; 
   nationalitiesList: string[] = []; 
+  userID:string = ""; 
+  clicked:boolean; 
 
-  constructor() { }
 
-  ngOnInit() {
+  constructor(private auth: AuthService, private afAuth: AngularFireAuth) {}
+
+  ngOnInit() { 
   }
 
   ngOnChanges(){ 
+    this.getUserId(); 
     this.setImagePath()  
     this.setNationaltiesList(); 
+    this.setButton(); 
+  }
+
+  getUserId(){ 
+      this.afAuth.auth.onAuthStateChanged( (user) => {
+        if (user) {
+           this.userID = user.uid;
+        } else {
+          this.userID = "";
+        }
+      });  
+  }
+
+  
+
+  setButton(){ 
+    if (this.venueToShow.guestList.includes(this.userID)) {  
+      this.clicked=true; 
+    }else{ 
+      this.clicked=false; 
+    }
   }
 
   setImagePath() {
@@ -40,5 +67,8 @@ export class AttendPartyComponent implements OnInit,OnChanges {
        }
     }
   }
+
+
+
 
 }
