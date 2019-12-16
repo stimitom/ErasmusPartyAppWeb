@@ -9,7 +9,7 @@ import { AngularFirestore, AngularFirestoreCollection } from '@angular/fire/fire
   styleUrls: ['./venues-list.component.css']
 })
 export class VenuesListComponent implements OnInit {
-  day_venues: Observable<any[]>; 
+  day_venues: Observable<Venue[]>; 
   day_venuesCollection: AngularFirestoreCollection<Venue>; 
 
   constructor(private db: AngularFirestore) {

@@ -17,8 +17,11 @@
                 <p class="card-text">
                   {{ venueToShow.address }}
                 </p>
-                <button *ngIf="!clicked" style="margin-top: 50%;" class="btn btn-primary btn-lg">I'm Going!</button>
-                <button *ngIf="clicked" style="margin-top: 50%;" class="btn btn-primary btn-lg">I'm not Going</button>
+                <div *ngIf="everythingLoaded" >
+                    <button *ngIf="!clicked" style="margin-top: 50%;" class="btn btn-primary btn-lg">I'm Going!</button>
+                    <button *ngIf="clicked" style="margin-top: 50%;" class="btn btn-primary btn-lg">I'm not Going</button>
+                </div>
+
             </div>
         </div>
         <hr>

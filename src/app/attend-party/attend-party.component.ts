@@ -2,6 +2,8 @@ import { Component, OnInit, Input, OnChanges } from '@angular/core';
 import { Venue } from '../shared/venue.model';
 import { AuthService } from 'src/app/shared/auth.service';
 import { AngularFireAuth } from '@angular/fire/auth';
+import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-attend-party',
@@ -10,22 +12,48 @@ import { AngularFireAuth } from '@angular/fire/auth';
 })
 export class AttendPartyComponent implements OnInit,OnChanges {
   @Input() venueToShow: Venue; 
+  day_venue_doc: AngularFirestoreDocument<Venue>; 
+  day_venue: Observable<Venue>; 
+  venueLive: Venue; 
+  everythingLoaded: boolean = false; 
+
   imagePath: string; 
   nationalitiesList: string[] = []; 
   userID:string = ""; 
   clicked:boolean; 
 
 
-  constructor(private auth: AuthService, private afAuth: AngularFireAuth) {}
 
-  ngOnInit() { 
+  constructor(private auth: AuthService, private afAuth: AngularFireAuth, private db:AngularFirestore) {}
+
+   ngOnInit() { 
+   this.setFreshComponent(); 
   }
 
   ngOnChanges(){ 
-    this.getUserId(); 
+    this.setFreshComponent();
     this.setImagePath()  
     this.setNationaltiesList(); 
-    this.setButton(); 
+  }
+
+  setFreshComponent(){ 
+    this.setQueries(); 
+    this.getUserId(); 
+    this.getVenueLive(); 
+  }
+
+  setQueries(){ 
+    this.day_venue_doc = this.db.collection("Kaunas,LT_dates").doc("21-11-2019").collection("day_venues").doc(this.venueToShow.venueName);
+    this.day_venue = this.day_venue_doc.valueChanges(); 
+  }
+
+  getVenueLive(){ 
+    this.day_venue.subscribe(res => { 
+      this.venueLive = res;  
+      this.setButton(); 
+      this.everythingLoaded = true;      
+    })
+
   }
 
   getUserId(){ 
@@ -34,14 +62,12 @@ export class AttendPartyComponent implements OnInit,OnChanges {
            this.userID = user.uid;
         } else {
           this.userID = "";
-        }
+        } 
       });  
   }
-
   
-
   setButton(){ 
-    if (this.venueToShow.guestList.includes(this.userID)) {  
+    if (this.venueLive.guestList.includes(this.userID)) {   
       this.clicked=true; 
     }else{ 
       this.clicked=false; 
