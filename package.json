@@ -21,6 +21,7 @@
     "@angular/platform-browser-dynamic": "~8.2.13",
     "@angular/router": "~8.2.13",
     "@types/dateformat": "^3.0.1",
+    "@types/firebase": "^3.2.1",
     "bootstrap": "^4.3.1",
     "dateformat": "^3.0.3",
     "firebase": "^7.5.0",

@@ -6,7 +6,8 @@ export interface User{
     email: string;
     city: string;
 
-    listnames: Array<string>; 
+    // listnames: Array<string>; 
+    listnames: any; 
     counterpos0: number;
     counterpos1: number;
     counterpos2: number;
