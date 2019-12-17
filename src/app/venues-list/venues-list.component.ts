@@ -16,7 +16,7 @@ export class VenuesListComponent implements OnInit {
    }
 
   ngOnInit() {
-    this.day_venuesCollection = this.db.collection("Kaunas,LT_dates").doc("21-11-2019").collection("day_venues", 
+    this.day_venuesCollection = this.db.collection("Kaunas,LT_dates").doc("22-11-2019").collection("day_venues", 
     (ref) => { 
         return ref.orderBy('numberOfAttendees', 'desc'); 
     } );

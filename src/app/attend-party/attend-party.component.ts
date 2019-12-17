@@ -15,7 +15,7 @@ import  * as dateFormat from 'dateformat';
 })
 export class AttendPartyComponent implements OnInit,OnChanges {
   @Input() venueToShow: Venue; 
-  date: string = "21-11-2019"; 
+  date: string = "22-11-2019"; 
 
   private firedb; 
   day_venue_ref:any; 
@@ -91,7 +91,7 @@ export class AttendPartyComponent implements OnInit,OnChanges {
     await this.getUserId(); 
     this.user_ref = this.firedb.collection("users").doc(this.userID); 
    this.db.collection("users").doc(this.userID).get().toPromise().then(res => { 
-     // Checks if user already has given date field
+     // Checks if user already has given date field   
      let user =res.data(); 
      let containsDate = false; 
      for (const field in user) {
@@ -99,13 +99,11 @@ export class AttendPartyComponent implements OnInit,OnChanges {
          containsDate = true; 
          break; 
      }
-     this.userNationality = user.nationality;
     }
+    this.userNationality = user.nationality;  
 
     //Adjusts user accordingly to value of containsDate
-    this.getUserVenueCountAndMapping(containsDate, user); 
-
-
+    this.getUserVenueCountAndMapping(containsDate, user);
    });
   }
 
@@ -137,9 +135,7 @@ export class AttendPartyComponent implements OnInit,OnChanges {
       }
 
     } 
-    else{ 
-      console.log("usersCountermappingChanged");
-      
+    else{     
       this.usersCounterMappingChanged = true;
       // new List wil be initialized,a counter needs to be set
       switch (listSize) {
@@ -148,14 +144,14 @@ export class AttendPartyComponent implements OnInit,OnChanges {
           break;
         case 2:
           this.usersVenueCountName = "counterpos2"; 
-          for (let [key, value] of user.countermapping){ 
+          for (let [key, value] of Object.entries(user.countermapping)){ 
             this.usersHashMap[key] = value; 
           }
           this.usersHashMap[this.date] = this.usersVenueCountName;
           break;
         case 1:
           this.usersVenueCountName = "counterpos1";
-          for (let [key, value] of user.countermapping) {
+          for (let [key, value] of Object.entries(user.countermapping)) {
             this.usersHashMap[key]= value;
           }
           this.usersHashMap[this.date] = this.usersVenueCountName;
@@ -272,20 +268,26 @@ getUserLive(){
   //// UPDATE DATABASE /////
   /// GOING //
   updateDbGoing(){   
-      const batch = this.firedb.batch();
-      ++this.venueToShow.numberOfAttendees;
-      this.updateVenueSideGoing(batch); 
-      this.updateUserSideGoing(batch); 
-      batch.commit(); 
+      if (this.usersVenueCountNumber <= 2) {
+        const batch = this.firedb.batch();
+        ++this.venueToShow.numberOfAttendees;
+        this.updateVenueSideGoing(batch);
+        this.updateUserSideGoing(batch);
+        batch.commit(); 
+      }else{ 
+        alert("You can only visit 3 venues per day.")
+      }    
   }
 
   updateVenueSideGoing(batch: firebase.firestore.WriteBatch){ 
+    console.log(this.userNationality);
+    
     this.venueUsersNationalitiesMap[`${this.userID}`] = this.userNationality; 
     if (!this.nationalitiesList.includes(this.userNationality)) {
       this.nationalitiesList.push(this.userNationality); 
     }
     batch.update(this.day_venue_ref, { numberOfAttendees: firebase.firestore.FieldValue.increment(1)});
-    // batch.update(this.day_venue_ref, { usersNationalitiesMap: this.venueUsersNationalitiesMap});
+    batch.update(this.day_venue_ref, { usersNationalitiesMap: this.venueUsersNationalitiesMap});
     batch.update(this.day_venue_ref, { guestList: firebase.firestore.FieldValue.arrayUnion(this.userID)});
   }
 
@@ -297,6 +299,8 @@ getUserLive(){
   }
 
   /// NOT GOING /// 
+
+  
 
 
 
