@@ -39,7 +39,7 @@ export class AttendPartyComponent implements OnInit,OnChanges {
   venueLoaded: boolean = false; 
 
   imagePath: string; 
-  nationalitiesList: string[] = []; 
+  nationalitiesList: any[] = []; 
   clicked:boolean; 
   admin:any; 
 
@@ -300,8 +300,31 @@ getUserLive(){
 
   /// NOT GOING /// 
 
-  
+  updateDbNotGoing(){ 
+    const batch = this.firedb.batch(); 
+    --this.venueToShow.numberOfAttendees;
+    this.updateVenueSideNotGoing(batch); 
+    this.updateUserSideNotGoing(batch); 
+    batch.commit(); 
+  }
 
+  updateVenueSideNotGoing(batch: firebase.firestore.WriteBatch){ 
+    delete this.venueUsersNationalitiesMap[this.userID]; 
+    this.nationalitiesList = []; 
+    for (let nationality of Object.values(this.venueUsersNationalitiesMap)) {
+      if (!this.nationalitiesList.includes(nationality)) {
+        this.nationalitiesList.push(nationality);
+      }
+    }
+    batch.update(this.day_venue_ref,{usersNationalitiesMap: this.venueUsersNationalitiesMap}); 
+    batch.update(this.day_venue_ref, {guestList: firebase.firestore.FieldValue.arrayRemove(this.userID)}); 
+    batch.update(this.day_venue_ref, { numberOfAttendees: firebase.firestore.FieldValue.increment(-1)}); 
+  }
+
+  updateUserSideNotGoing(batch: firebase.firestore.WriteBatch){ 
+    batch.update(this.user_ref,{[`${this.date}`]: firebase.firestore.FieldValue.arrayRemove(this.venueLive.venueName)});
+    batch.update(this.user_ref,{[`${this.usersVenueCountName}`]: firebase.firestore.FieldValue.increment(-1)});
+  }
 
 
 

@@ -19,7 +19,7 @@
                 </p>
                 <div *ngIf="venueLoaded" >
                     <button *ngIf="!clicked" (click)="updateDbGoing()" style="margin-top: 50%;" class="btn btn-primary btn-lg">I'm Going!</button>
-                    <button *ngIf="clicked" style="margin-top: 50%;" class="btn btn-primary btn-lg">I'm not Going</button>
+                    <button *ngIf="clicked" (click)="updateDbNotGoing()" style="margin-top: 50%;" class="btn btn-primary btn-lg">I'm not Going</button>
                 </div>
 
             </div>
