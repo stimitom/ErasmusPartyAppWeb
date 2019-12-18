@@ -1,0 +1,11 @@
+<ul class="nav nav-tabs justify-content-center" id="calender">
+    <li class="nav-item" (click)="activateToday()">
+        <p class="nav-link" >{{ dateToday }}</p>
+    </li>
+    <li class="nav-item" (click)="activateTomorrow()">
+        <p class="nav-link" >{{ dateTomorrow }}</p>
+    </li>
+    <li class="nav-item" (click)="activateTheDayAfterTomorrow()">
+        <p class="nav-link">{{ dateTheDayAfterTomorrow }}</p>
+    </li>
+</ul>

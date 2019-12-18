@@ -18,6 +18,9 @@ import { HeaderComponent } from './header/header.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
+import { CalenderComponent } from './home/calender/calender.component';
+import { CalenderService } from './shared/calender.service';
+
 
 
 
@@ -32,7 +35,8 @@ import { HomeComponent } from './home/home.component';
     HeaderComponent,
     RegistrationComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CalenderComponent
   ],
   imports: [
     BrowserModule,
@@ -42,7 +46,7 @@ import { HomeComponent } from './home/home.component';
     AngularFirestoreModule, 
     AngularFireAuthModule
   ],
-  providers: [VenueService],
+  providers: [VenueService,CalenderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
