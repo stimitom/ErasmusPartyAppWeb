@@ -37,23 +37,14 @@ export class CalenderComponent implements OnInit {
 
   activateToday(){ 
     this.calenderService.dateSelected.emit(this.dateToday); 
-    this.activeToday = true; 
-    this.activeTomorrow = false; 
-    this.activeTheDayAfterTomorrow = false; 
   }
 
   activateTomorrow() {
     this.calenderService.dateSelected.emit(this.dateTomorrow);
-    this.activeToday = false;
-    this.activeTomorrow = true;
-    this.activeTheDayAfterTomorrow = false;
   }
 
   activateTheDayAfterTomorrow() {
     this.calenderService.dateSelected.emit(this.dateTheDayAfterTomorrow);
-    this.activeToday = false;
-    this.activeTomorrow = false;
-    this.activeTheDayAfterTomorrow = true;
   }
 
 

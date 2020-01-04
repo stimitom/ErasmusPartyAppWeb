@@ -7,6 +7,7 @@ import { AngularFirestore,AngularFirestoreDocument } from '@angular/fire/firesto
 import * as firebase from 'firebase/app';
 import { Observable } from 'rxjs';
 import  * as dateFormat from 'dateformat';
+import { CalenderService } from '../shared/calender.service';
 
 @Component({
   selector: 'app-attend-party',
@@ -15,7 +16,7 @@ import  * as dateFormat from 'dateformat';
 })
 export class AttendPartyComponent implements OnInit,OnChanges {
   @Input() venueToShow: Venue; 
-  date: string = "22-11-2019"; 
+  dateSelected: string;
 
   private firedb; 
   day_venue_ref:any; 
@@ -46,8 +47,9 @@ export class AttendPartyComponent implements OnInit,OnChanges {
 
 
 
-  constructor(private auth: AuthService, private afAuth: AngularFireAuth, private db: AngularFirestore) {
+  constructor(private auth: AuthService, private afAuth: AngularFireAuth, private db: AngularFirestore, private calenderService: CalenderService) {
     this.firedb = firebase.firestore(); 
+    this.setFormattedInitialDate(); 
   }
 
    ngOnInit() { 
@@ -60,6 +62,24 @@ export class AttendPartyComponent implements OnInit,OnChanges {
     this.setNationaltiesList(); 
   }
 
+  /// Date Methods /// 
+
+  setFormattedInitialDate() {
+    let currentDate = new Date();
+    this.dateSelected = dateFormat(currentDate, "dd'-'mm'-'yyyy");
+  }
+
+  selectDate() {
+    this.calenderService.dateSelected
+      .subscribe(date => {
+        this.dateSelected = date;
+        console.log(this.dateSelected);
+        this.setFreshComponent(); 
+      }
+      );
+
+  }
+
   ///Set general queries and frontend ///
    setFreshComponent(){ 
     this.setQueries(); 
@@ -68,9 +88,9 @@ export class AttendPartyComponent implements OnInit,OnChanges {
   }
 
   async setQueries(){ 
-    this.day_venue_doc = this.db.collection("Kaunas,LT_dates").doc(this.date).collection("day_venues").doc(this.venueToShow.venueName);
+    this.day_venue_doc = this.db.collection("Kaunas,LT_dates").doc(this.dateSelected).collection("day_venues").doc(this.venueToShow.venueName);
     this.day_venue$ = this.day_venue_doc.valueChanges(); 
-    this.day_venue_ref = this.firedb.collection("Kaunas,LT_dates").doc(this.date).collection("day_venues").doc(this.venueToShow.venueName);
+    this.day_venue_ref = this.firedb.collection("Kaunas,LT_dates").doc(this.dateSelected).collection("day_venues").doc(this.venueToShow.venueName);
   }
 
   getVenueLive(){ 
@@ -95,7 +115,7 @@ export class AttendPartyComponent implements OnInit,OnChanges {
      let user =res.data(); 
      let containsDate = false; 
      for (const field in user) {
-       if (field == this.date) {
+       if (field == this.dateSelected) {
          containsDate = true; 
          break; 
      }
@@ -115,7 +135,7 @@ export class AttendPartyComponent implements OnInit,OnChanges {
         
     if (containsDate) {
       this.usersCounterMappingChanged = false; 
-      this.usersVenueCountName = user.countermapping[this.date];
+      this.usersVenueCountName = user.countermapping[this.dateSelected];
       switch (this.usersVenueCountName) {
         case "counterpos0":{
           this.usersVenueCountNumber = user.counterpos0;
@@ -147,18 +167,18 @@ export class AttendPartyComponent implements OnInit,OnChanges {
           for (let [key, value] of Object.entries(user.countermapping)){ 
             this.usersHashMap[key] = value; 
           }
-          this.usersHashMap[this.date] = this.usersVenueCountName;
+          this.usersHashMap[this.dateSelected] = this.usersVenueCountName;
           break;
         case 1:
           this.usersVenueCountName = "counterpos1";
           for (let [key, value] of Object.entries(user.countermapping)) {
             this.usersHashMap[key]= value;
           }
-          this.usersHashMap[this.date] = this.usersVenueCountName;
+          this.usersHashMap[this.dateSelected] = this.usersVenueCountName;
           break;
         default:
           this.usersVenueCountName = "counterpos0";
-          this.usersHashMap[this.date] =  this.usersVenueCountName;
+          this.usersHashMap[this.dateSelected] =  this.usersVenueCountName;
           break;
       }
       this.usersVenueCountNumber = 0;
@@ -178,7 +198,7 @@ export class AttendPartyComponent implements OnInit,OnChanges {
   this.usersVenueCountName = oldestCounter;
 
   //add the new date to the hashmap
-  this.usersHashMap[this.date] = this.usersVenueCountName;
+  this.usersHashMap[this.dateSelected] = this.usersVenueCountName;
   
   
   //Clean oldest Date from Listnames
@@ -292,9 +312,9 @@ getUserLive(){
   }
 
   updateUserSideGoing(batch: firebase.firestore.WriteBatch){ 
-    batch.update(this.user_ref, {[`${this.date}`]: firebase.firestore.FieldValue.arrayUnion(this.venueLive.venueName)});
+    batch.update(this.user_ref, {[`${this.dateSelected}`]: firebase.firestore.FieldValue.arrayUnion(this.venueLive.venueName)});
     batch.update(this.user_ref,{[`${this.usersVenueCountName}`]: firebase.firestore.FieldValue.increment(1)}); 
-    batch.update(this.user_ref,{listnames: firebase.firestore.FieldValue.arrayUnion(this.date)}); 
+    batch.update(this.user_ref,{listnames: firebase.firestore.FieldValue.arrayUnion(this.dateSelected)}); 
     if (this.usersCounterMappingChanged) batch.update(this.user_ref,{countermapping: this.usersHashMap});
   }
 
@@ -322,11 +342,7 @@ getUserLive(){
   }
 
   updateUserSideNotGoing(batch: firebase.firestore.WriteBatch){ 
-    batch.update(this.user_ref,{[`${this.date}`]: firebase.firestore.FieldValue.arrayRemove(this.venueLive.venueName)});
+    batch.update(this.user_ref,{[`${this.dateSelected}`]: firebase.firestore.FieldValue.arrayRemove(this.venueLive.venueName)});
     batch.update(this.user_ref,{[`${this.usersVenueCountName}`]: firebase.firestore.FieldValue.increment(-1)});
   }
-
-
-
-
 }

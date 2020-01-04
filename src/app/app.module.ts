@@ -20,6 +20,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CalenderComponent } from './home/calender/calender.component';
 import { CalenderService } from './shared/calender.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTabsModule } from '@angular/material';
 
 
 
@@ -44,7 +46,10 @@ import { CalenderService } from './shared/calender.service';
     FormsModule, 
     AngularFireModule.initializeApp(environment.firebaseConfig), 
     AngularFirestoreModule, 
-    AngularFireAuthModule
+    AngularFireAuthModule, 
+    BrowserAnimationsModule, 
+    MatTabsModule
+
   ],
   providers: [VenueService,CalenderService],
   bootstrap: [AppComponent]

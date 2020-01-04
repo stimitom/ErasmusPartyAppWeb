@@ -22,10 +22,10 @@ export class VenuesListComponent implements OnInit {
 
   ngOnInit() {
     this.setVenuesToShow();
+    this.selectDate(); 
   }
 
-  ngOnChanges(){ 
-  }
+  
 
   setFormattedInitialDate() {
     let currentDate = new Date();
@@ -46,7 +46,9 @@ export class VenuesListComponent implements OnInit {
       .subscribe(date => {
         this.dateSelected = date;
         console.log("dateSelected:" + this.dateSelected);
+        this.setVenuesToShow(); 
       }
       );
+      
   }
 }

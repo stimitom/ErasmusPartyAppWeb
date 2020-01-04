@@ -1,11 +1,23 @@
-<ul class="nav nav-tabs justify-content-center" id="calender">
+<!-- <ul class="nav nav-tabs justify-content-center" id="calender" role="tablist">
     <li class="nav-item" (click)="activateToday()">
-        <p class="nav-link" >{{ dateToday }}</p>
+        <p class="nav-link active" id="home-tab" role="tab" data-toggle="tab" aria-controls="today" aria-selected="true">{{ dateToday }}</p>
     </li>
     <li class="nav-item" (click)="activateTomorrow()">
-        <p class="nav-link" >{{ dateTomorrow }}</p>
+        <p class="nav-link" id="profile-tab" role="tab" data-toggle="tab" aria-controls="tomorrow" aria-selected="false">{{ dateTomorrow }}</p>
     </li>
     <li class="nav-item" (click)="activateTheDayAfterTomorrow()">
-        <p class="nav-link">{{ dateTheDayAfterTomorrow }}</p>
+        <p class="nav-link" id="contact-tab" role="tab" data-toggle="tab" aria-controls="thedayaftertomorrow" aria-selected="false">{{ dateTheDayAfterTomorrow }}</p>
     </li>
-</ul>
+</ul> -->
+<!-- <mat-tab-group>
+    <mat-tab label="First"> Content 1 </mat-tab>
+    <mat-tab label="Second"> Content 2 </mat-tab>
+    <mat-tab label="Third"> Content 3 </mat-tab>
+</mat-tab-group> -->
+
+<mat-tab-group>
+    <mat-tab (click)="activateToday()" label="{{ dateToday }}" active></mat-tab>
+    <mat-tab (click)="activateTomorrow()" label="{{ dateTomorrow }}"></mat-tab>
+    <mat-tab (click)="activateTheDayAfterTomorrow()" label = "{{ dateTheDayAfterTomorrow }}"></mat-tab>
+</mat-tab-group>
+       
