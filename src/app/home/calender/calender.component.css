@@ -1,3 +1,4 @@
-#calender{ 
-    font-size: larger;
+/* Style for tab underline */
+.mat-tab-group.mat-primary .mat-ink-bar, .mat-tab-nav-bar.mat-primary .mat-ink-bar{
+  background: #939EF8;
 }

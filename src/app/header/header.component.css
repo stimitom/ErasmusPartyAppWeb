@@ -16,3 +16,7 @@
     color: #ffffff;
     font-size: x-large;
 }
+#scrollable {
+  height:150px;
+  overflow-y: scroll;
+}
