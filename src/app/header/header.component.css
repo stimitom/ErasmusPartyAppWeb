@@ -1,22 +1,14 @@
-.my-navbar{ 
-    min-height:100px;
-    background-color:#939EF8;
-    color: #ffffff;
+.bg-my-nav{ 
+    background-color:#939EF8 !important ;
 }
+
 .my-nav-link{ 
-    color: #ffffff; 
-    font-size: larger;
-    padding-top: 14px;
+    color: #ffffff !important; 
+    font-size: larger !important;
 }
-.my-nav-link-large{ 
-    color: #ffffff; 
-    font-size: x-large;
-}
-.my-navbar-text{ 
-    color: #ffffff;
-    font-size: x-large;
-}
+
 #scrollable {
   height:150px;
   overflow-y: scroll;
 }
+

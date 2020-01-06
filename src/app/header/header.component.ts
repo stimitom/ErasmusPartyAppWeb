@@ -8,10 +8,13 @@ import { Router } from '@angular/router';
   styleUrls: ['./header.component.css']
 })
 export class HeaderComponent implements OnInit {
-
+  navbarOpen = false;
   user:firebase.User; 
   constructor(private auth: AuthService, private router: Router) { }
 
+  toggleNavbar() {
+    this.navbarOpen = !this.navbarOpen;
+  }
   ngOnInit() {
     this.auth.getUserState()
     .subscribe( user => { 
