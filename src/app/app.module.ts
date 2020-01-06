@@ -51,7 +51,7 @@ import { MatTabsModule } from '@angular/material';
     MatTabsModule
 
   ],
-  providers: [VenueService,CalenderService],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
