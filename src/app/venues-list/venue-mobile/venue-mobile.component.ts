@@ -19,8 +19,8 @@ export class VenueMobileComponent implements OnInit {
   }
 
   onSelected() {
-    this.venueService.venueSelected.emit(this.venue);
     this.router.navigate(['/venue/m']);
+    this.venueService.venueSelected.emit(this.venue);
   }
 
   setImagePath() {

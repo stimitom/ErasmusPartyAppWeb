@@ -25,11 +25,10 @@ export class VenuesListComponent implements OnInit {
   ngOnInit() {
     this.setVenuesToShow();
     this.selectDate();
-    
-
     this.onResize()
     this.responsiveService.checkWidth();
   }
+
   onResize() {
     this.responsiveService.getMobileStatus().subscribe(isMobile => {
       this.isMobile = isMobile;
@@ -40,6 +39,9 @@ export class VenuesListComponent implements OnInit {
   setFormattedInitialDate() {
     let currentDate = new Date();
     this.dateSelected = dateFormat(currentDate, "dd'-'mm'-'yyyy");
+    this.calenderService.dateSelected.emit(this.dateSelected); 
+    console.log("date emitted from venueslist: "  + this.dateSelected);
+    
   }
 
   setVenuesToShow() {

@@ -1,1 +1,44 @@
-<p>attend-party-mobile works!</p>
+<!-- Description -->
+<div class="card mb-3">
+    <div class="container">
+        <div class="row no-gutters">
+            <div class="col-4">
+                <img src="{{ imagePath }}" class="card-img" alt="bar icon">
+            </div>
+            <div class="col-8">
+                <h3 class="card-title">{{ venueToShow.venueName }}</h3>
+            </div>
+        </div>
+        <div class="row no-gutters">
+            <div class="col-6">
+                <p class="card-text" *ngFor="let weekday of venueToShow.openingHours">{{ weekday }}</p>
+            </div>
+            <div class="col-6 text-center">
+                <p class="card-text">
+                    {{ venueToShow.address }}
+                </p>
+            </div>
+            <div class="row justify-content-center">
+                <div *ngIf="venueLoaded">
+                    <button *ngIf="!clicked" (click)="updateDbGoing()" style="margin-top: 50%;"
+                        class="btn btn-primary btn-lg">I'm
+                        Going!</button>
+                    <button *ngIf="clicked" (click)="updateDbNotGoing()" style="margin-top: 50%;"
+                        class="btn btn-primary btn-lg">I'm not
+                        Going</button>
+                </div>
+            </div>
+        </div>
+        <hr>
+        <div style="text-align: center;" *ngIf="venueToShow.numberOfAttendees !== 0; else noGuestsYet">
+            <h4>{{ venueToShow.numberOfAttendees }} </h4>
+            <h5>Guests from:</h5>
+        </div>
+        <ng-template #noGuestsYet>
+            <h5>Be the first one to attend!<br /></h5>
+        </ng-template>
+        <!-- Nationalities Cards -->
+        <app-nationality-card *ngFor="let nationalityEl of nationalitiesList" [nationality]="nationalityEl">
+        </app-nationality-card>
+    </div>
+</div>

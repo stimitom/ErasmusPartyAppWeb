@@ -10,9 +10,9 @@ import { MatTabChangeEvent } from '@angular/material';
   encapsulation: ViewEncapsulation.None
 })
 export class CalenderComponent implements OnInit {
-  @Input() dateToday: string;
-  @Input() dateTomorrow: string;
-  @Input() dateTheDayAfterTomorrow: string;
+  dateToday: string;
+  dateTomorrow: string;
+  dateTheDayAfterTomorrow: string;
 
   constructor(private calenderService:CalenderService) {
     this.getFormattedDates(); 
