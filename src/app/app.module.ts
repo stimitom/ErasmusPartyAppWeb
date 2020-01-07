@@ -12,16 +12,16 @@ import { environment } from 'src/environments/environment';
 import { VenuesListComponent } from './venues-list/venues-list.component';
 import { AttendPartyComponent } from './attend-party/attend-party.component';
 import { VenueComponent } from './venues-list/venue/venue.component';
-import { VenueService } from './shared/venue.service';
 import { NationalityCardComponent } from './attend-party/nationality-card/nationality-card.component';
 import { HeaderComponent } from './header/header.component';
 import { RegistrationComponent } from './auth/registration/registration.component';
 import { LoginComponent } from './auth/login/login.component';
 import { HomeComponent } from './home/home.component';
 import { CalenderComponent } from './home/calender/calender.component';
-import { CalenderService } from './shared/calender.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material';
+import { VenueMobileComponent } from './venues-list/venue-mobile/venue-mobile.component';
+
 
 
 
@@ -38,7 +38,8 @@ import { MatTabsModule } from '@angular/material';
     RegistrationComponent,
     LoginComponent,
     HomeComponent,
-    CalenderComponent
+    CalenderComponent,
+    VenueMobileComponent
   ],
   imports: [
     BrowserModule,

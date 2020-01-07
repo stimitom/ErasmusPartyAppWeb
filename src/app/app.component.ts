@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ResponsiveService } from './shared/responsive.service';
 
 
 @Component({
@@ -9,9 +10,15 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'ErasmusPartyAppWeb';
 
-  constructor(){}
+  constructor(private responsiveService:ResponsiveService){}
   
   ngOnInit(){ 
+    this.responsiveService.getMobileStatus().subscribe(); 
+    this.onResize(); 
+  }
+
+  onResize(){ 
+    this.responsiveService.checkWidth(); 
   }
 
 }
