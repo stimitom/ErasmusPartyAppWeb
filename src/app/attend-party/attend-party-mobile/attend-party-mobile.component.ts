@@ -92,6 +92,8 @@ export class AttendPartyMobileComponent implements OnInit {
       this.venueToShow = venue;
       console.log("venueToShow: " + venue.venueName);
       this.setFreshComponent(); 
+   
+
     });
   }
 
@@ -99,7 +101,7 @@ export class AttendPartyMobileComponent implements OnInit {
 
   setFormattedInitialDate() {
     let currentDate = new Date();
-    this.dateSelected = dateFormat(currentDate, "dd'-'mm'-'yyyy");
+    this.dateSelected = dateFormat(currentDate, "dd'-'mm'-'yyyy");    
   }
 
 
@@ -124,7 +126,7 @@ export class AttendPartyMobileComponent implements OnInit {
       }
       this.setButton();
       this.venueLoaded = true;
-    })
+    });
   }
 
   // ////////////////////
