@@ -4,11 +4,11 @@
 <div id="main-component-desktop" *ngIf="!isMobile">
     <div class="row">
         <!-- Venues List -->
-        <div id="scrollable" class="col-sm-12 col-md-7">
+        <div id="scrollable" class="col-md-7">
             <app-venues-list></app-venues-list>
         </div>
         <!-- Attend Party -->
-        <div class="col-sm-0 col-md-5">
+        <div class="col-md-5">
             <app-attend-party *ngIf="venueSelected; else infoText" [venueToShow]="venueSelected"></app-attend-party>
             <ng-template #infoText>
                 <h5>Please select a bar or nightclub!</h5>
@@ -20,7 +20,6 @@
 <!-- Mobile Template -->
 <div id="main-component-mobile" *ngIf="isMobile">
     <!-- Venues List -->
-    <div id="scrollable" class="col-sm-12">
-        <app-venues-list></app-venues-list>
-    </div>
+    <app-venues-list></app-venues-list>
+    
 </div>

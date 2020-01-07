@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Venue } from 'src/app/shared/venue.model';
 import { VenueService } from 'src/app/shared/venue.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-venue-mobile',
@@ -11,7 +12,7 @@ export class VenueMobileComponent implements OnInit {
   @Input() venue: Venue;
   imagePath: string;
 
-  constructor(private venueService: VenueService) { }
+  constructor(private venueService: VenueService, private router:Router) { }
 
   ngOnInit() {
     this.setImagePath();
@@ -19,6 +20,7 @@ export class VenueMobileComponent implements OnInit {
 
   onSelected() {
     this.venueService.venueSelected.emit(this.venue);
+    this.router.navigate(['/venue/m']);
   }
 
   setImagePath() {
@@ -30,6 +32,6 @@ export class VenueMobileComponent implements OnInit {
       this.imagePath = "assets/Icons/icon_disco2_100.png"
     }
   }
-  
+
 }
 

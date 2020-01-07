@@ -21,6 +21,7 @@ import { CalenderComponent } from './home/calender/calender.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTabsModule } from '@angular/material';
 import { VenueMobileComponent } from './venues-list/venue-mobile/venue-mobile.component';
+import { AttendPartyMobileComponent } from './attend-party/attend-party-mobile/attend-party-mobile.component';
 
 
 
@@ -39,7 +40,8 @@ import { VenueMobileComponent } from './venues-list/venue-mobile/venue-mobile.co
     LoginComponent,
     HomeComponent,
     CalenderComponent,
-    VenueMobileComponent
+    VenueMobileComponent,
+    AttendPartyMobileComponent
   ],
   imports: [
     BrowserModule,

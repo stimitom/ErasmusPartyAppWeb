@@ -1,14 +1,8 @@
 <!-- Venues-List Desktop Venues-->
-<div  *ngIf="!isMobile">
-   <app-venue *ngFor = "let day_venue of day_venues | async"
-   [venue]="day_venue"></app-venue>
+<div *ngIf="!isMobile">
+   <app-venue *ngFor="let day_venue of day_venues | async" [venue]="day_venue"></app-venue>
 </div>
-<!-- Venues.list Mobile Venues -->
-<div *ngIf="isMobile" >
-   <app-venue-mobile *ngFor = "let day_venue of day_venues | async"
-   [venue]="day_venue"></app-venue-mobile>
+<!-- Venues-List Mobile Venues -->
+<div *ngIf="isMobile">
+      <app-venue-mobile *ngFor="let day_venue of day_venues | async" [venue]="day_venue"></app-venue-mobile>
 </div>
-
-
-
-

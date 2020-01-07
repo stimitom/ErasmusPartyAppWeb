@@ -95,6 +95,7 @@ export class AttendPartyComponent implements OnInit,OnChanges {
 
   getVenueLive(){ 
    this.day_venue$.subscribe(res => { 
+     this.venueToShow = res; 
       this.venueLive = res;  
      for (let [key, value] of Object.entries(this.venueLive.usersNationalitiesMap)){
        this.venueUsersNationalitiesMap[key] = value; 
