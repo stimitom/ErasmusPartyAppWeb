@@ -1,22 +1,24 @@
 <div class="card mb-3" (click)="onSelected()">
     <div class="row no-gutters">
-            <div class="col-sm-2 col-md-2">
-                <img src="{{ imagePath }}" class="card-img-sm" alt="bar icon">
+        <div class="col-md-2 d-none d-md-block">
+            <img src="{{ imagePath }}" class="card-img-sm img-fluid" alt="bar icon">
+        </div>
+
+        <div class="col-8 col-md-7">
+            <div class="card-body">
+                <h4 class="card-title">{{ venue.venueName }}</h4>
+                <p class="card-text">Google Rating: {{ venue.rating  }}</p>
             </div>
-            
-            <div class="col-md-7 col-sm-7">
-                <div class="card-body">
-                    <h4 class="card-title">{{ venue.venueName }}</h4>
-                    <p class="card-text">Google Rating: {{ venue.rating  }}</p>
+        </div>
+
+        <div class="col-4 col-md-3">
+            <div class="card-body">
+                <div id="guest-view">
+                    <h5>{{ venue.numberOfAttendees }}</h5>
+                    <p>Guests</p>
                 </div>
             </div>
-            <div class="col-md-3 col-sm-3">
-                <div class="card-body">
-                    <div style="text-align: center;">
-                        <h5>{{ venue.numberOfAttendees }}</h5>
-                        <p>Guests</p>
-                    </div>
-                </div>
-            </div>
+        </div>
+
     </div>
 </div>
