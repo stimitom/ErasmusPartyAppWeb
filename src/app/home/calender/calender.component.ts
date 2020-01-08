@@ -33,15 +33,15 @@ export class CalenderComponent implements OnInit {
   }
 
   activateToday(){ 
-    this.calenderService.dateSelected.emit(this.dateToday); 
+    this.calenderService.dateSelected.next(this.dateToday); 
   }
 
   activateTomorrow() {
-    this.calenderService.dateSelected.emit(this.dateTomorrow);
+    this.calenderService.dateSelected.next(this.dateTomorrow);
   }
 
   activateTheDayAfterTomorrow() {
-    this.calenderService.dateSelected.emit(this.dateTheDayAfterTomorrow);
+    this.calenderService.dateSelected.next(this.dateTheDayAfterTomorrow);
   }
 
   onTabClicked(event: MatTabChangeEvent){ 

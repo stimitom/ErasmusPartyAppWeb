@@ -11,16 +11,16 @@ import { Router } from '@angular/router';
 export class VenueMobileComponent implements OnInit {
   @Input() venue: Venue;
   imagePath: string;
-
-  constructor(private venueService: VenueService, private router:Router) { }
+  
+  constructor(private router: Router, private venueService: VenueService) {}
 
   ngOnInit() {
     this.setImagePath();
   }
 
   onSelected() {
+    this.venueService.venueSelected.next(this.venue);
     this.router.navigate(['/venue/m']);
-    this.venueService.venueSelected.emit(this.venue);
   }
 
   setImagePath() {

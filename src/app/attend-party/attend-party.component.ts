@@ -111,6 +111,7 @@ export class AttendPartyComponent implements OnInit, OnChanges {
       // Checks if user already has given date field   
       let user = res.data();
       let containsDate = false;
+      
       for (const field in user) {
         if (field == this.dateSelected) {
           containsDate = true;
@@ -118,6 +119,7 @@ export class AttendPartyComponent implements OnInit, OnChanges {
         }
       }
       this.userNationality = user.nationality;
+      
 
       //Adjusts user accordingly to value of containsDate
       this.getUserVenueCountAndMapping(containsDate, user);
@@ -286,6 +288,7 @@ export class AttendPartyComponent implements OnInit, OnChanges {
   /// GOING //
   updateDbGoing() {
     console.log("update with date: " + this.dateSelected);
+    console.log("users venue Count" + this.usersVenueCountNumber);
     
     if (this.usersVenueCountNumber <= 2) {
       const batch = this.firedb.batch();
@@ -299,8 +302,6 @@ export class AttendPartyComponent implements OnInit, OnChanges {
   }
 
   updateVenueSideGoing(batch: firebase.firestore.WriteBatch) {
-    console.log(this.userNationality);
-
     this.venueUsersNationalitiesMap[`${this.userID}`] = this.userNationality;
     if (!this.nationalitiesList.includes(this.userNationality)) {
       this.nationalitiesList.push(this.userNationality);

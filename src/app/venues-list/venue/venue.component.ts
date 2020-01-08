@@ -1,7 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Venue } from 'src/app/shared/venue.model';
 import { VenueService } from 'src/app/shared/venue.service';
-import { CalenderService } from 'src/app/shared/calender.service';
 
 @Component({
   selector: 'app-venue',
@@ -11,16 +10,16 @@ import { CalenderService } from 'src/app/shared/calender.service';
 export class VenueComponent implements OnInit {
   @Input() venue: Venue; 
   imagePath: string; 
-
-  constructor(private venueService:VenueService) { }
+  
+  constructor(private venueService: VenueService) { 
+  }
 
   ngOnInit() {
    this.setImagePath(); 
   }
 
   onSelected(){ 
-    this.venueService.venueSelected.emit(this.venue); 
-
+    this.venueService.venueSelected.next(this.venue); 
   }
 
   setImagePath(){ 

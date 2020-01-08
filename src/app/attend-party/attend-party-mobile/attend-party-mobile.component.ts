@@ -19,7 +19,7 @@ import { User } from 'src/app/shared/user.model';
   styleUrls: ['./attend-party-mobile.component.css']
 })
 export class AttendPartyMobileComponent implements OnInit {
-  @Input() venueToShow: Venue; 
+  venueToShow: Venue; 
   dateSelected: string;
 
   private firedb;
@@ -42,6 +42,7 @@ export class AttendPartyMobileComponent implements OnInit {
   userNationality: string;
 
   venueLoaded: boolean = false;
+  isLoaded:boolean = false; 
 
   imagePath: string;
   nationalitiesList: any[] = [];
@@ -59,8 +60,11 @@ export class AttendPartyMobileComponent implements OnInit {
     this.setFormattedInitialDate();
     this.getVenueToShow(); 
     }
+
     ngOnInit(){
       this.checkIfScreenExpanded(); 
+      this.setFreshComponent();
+      this.setImagePath();  
     }
 
 
@@ -90,10 +94,6 @@ export class AttendPartyMobileComponent implements OnInit {
   getVenueToShow() {
     this.venueService.venueSelected.subscribe(venue => {
       this.venueToShow = venue;
-      console.log("venueToShow: " + venue.venueName);
-      this.setFreshComponent(); 
-   
-
     });
   }
 

@@ -39,7 +39,7 @@ export class VenuesListComponent implements OnInit {
   setFormattedInitialDate() {
     let currentDate = new Date();
     this.dateSelected = dateFormat(currentDate, "dd'-'mm'-'yyyy");
-    this.calenderService.dateSelected.emit(this.dateSelected); 
+    this.calenderService.dateSelected.next(this.dateSelected); 
     console.log("date emitted from venueslist: "  + this.dateSelected);
     
   }
