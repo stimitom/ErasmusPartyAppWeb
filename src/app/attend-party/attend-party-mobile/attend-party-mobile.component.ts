@@ -31,7 +31,6 @@ export class AttendPartyMobileComponent implements OnInit {
   venueLive: Venue;
   venueUsersNationalitiesMap: {} = {};
 
-  user_doc: AngularFirestoreDocument<User>;
   user$: Observable<User>
   userLive: User;
   usersCounterMappingChanged: boolean;
@@ -225,7 +224,7 @@ export class AttendPartyMobileComponent implements OnInit {
     //add the new date to the hashmap
     this.usersHashMap[this.dateSelected] = this.usersVenueCountName;
    //Clean oldest Date from Listnames
-    this.user_doc.update({ listnames: firebase.firestore.FieldValue.arrayRemove(oldestDateString) })
+    this.user_ref.update({ listnames: firebase.firestore.FieldValue.arrayRemove(oldestDateString) })
   }
 
   getOldestDateString(counterMapping: {}) {
@@ -237,7 +236,7 @@ export class AttendPartyMobileComponent implements OnInit {
 
     let oldestDate: Date = null;
     let checkDate: Date = null;
-    let typescriptFormattedDates: string[];
+    let typescriptFormattedDates: string[] = [];
     for (let javaFormattedDate of Object.keys(this.usersHashMap)) {
       typescriptFormattedDates.push(javaFormattedDate.substring(3, 5) + "/" + javaFormattedDate.substring(0, 2) + "/" + javaFormattedDate.substring(6))
     }
