@@ -1,78 +1,4 @@
 <!-- Navbar  -->
-<!-- <header class="navbar my-navbar navbar-expand-md"> -->
-    <!-- Branding -->
-    <!-- <a class="navbar-brand" href="#">
-        <img src="assets/Icons/icon_disco_100.png">
-    </a> -->
-   <!--  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-    </button> -->
-
-    <!-- Items -->
-    <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item">
-                <a class="nav-link my-nav-link-large">Erasmus Party App</a>
-            </li>
-        </ul>
-         <ul class="navbar-nav navbar-right">
-            <li class="nav-item active">
-                <a class="nav-link my-nav-link" href="#">City<span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link my-nav-link" href="#">About</a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link  my-nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
-                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Profile
-                </a>
-                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                    <a class="dropdown-item" href="#">Become your City's Host!</a>
-                    <a class="dropdown-item" href="#">Edit Profile</a>
-
-                </div>
-            </li>
-            <li class="nav-item">
-                <a *ngIf="!user" (click)="login()" class="nav-link my-nav-link">Log In</a>
-                <a *ngIf="user" (click)="logout()" class="nav-link my-nav-link">Log Out</a>
-            </li>
-        </ul>
-    </div>
-</header> -->
-
-
-<!-- 
-<div class="header">
-    <div class="row">
-        <div class="col-md-12">
-            <nav class="navbar navbar-expand-md">
-                <a class="navbar-brand" href="#">
-                    <img src="assets/Icons/icon_disco_100.png">
-                </a>
-            <button class="navbar-toggler ml-auto custom-toggler" type="button" data-toggle="collapse" 
-                (click="isCollapsed = !isCollapsed")>
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            
-            The Menu Items -->
-            <!-- <div class="collapse navbar-collapse" id="navbarSupportedContent" [ngbCollapse]="isCollapsed">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item">
-                        <a class="nav-link my-nav-link" href="#">About</a>
-                    </li>
-                    <li class="nav-item">
-                        <a *ngIf="!user" (click)="login()" class="nav-link my-nav-link">Log In</a>
-                        <a *ngIf="user" (click)="logout()" class="nav-link my-nav-link">Log Out</a>
-                    </li>
-                </ul>
-            </div>
-            </nav>
-        </div>
-    </div>
-</div> --> 
-
 <nav class="navbar navbar-expand-lg navbar-light bg-my-nav">
     <a class="navbar-brand" href="#">
         <img src="assets/Icons/icon_disco_100.png">
@@ -86,7 +12,7 @@
     [ngClass]="{ 'show': navbarOpen }">
         <ul class="navbar-nav mr-auto">
             <li class="nav-item">
-                <a class="nav-link my-nav-link" href="#">About</a>
+                <a class="nav-link my-nav-link" (click)="goToAbout()">About</a>
             </li>
             <li class="nav-item">
                 <a *ngIf="!user" (click)="login()" class="nav-link my-nav-link">Log In</a>
