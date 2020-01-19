@@ -19,6 +19,13 @@ export class RegistrationComponent implements OnInit {
     })
   }
 
+  checkPassword(frm): boolean{ 
+    // console.log("passwords match: " +
+    //  frm.value.password === frm.value.repeatPassword); 
+    
+     return true; 
+  }
+
   createUser(frm){ 
     this.auth.createUser(frm.value); 
   }
