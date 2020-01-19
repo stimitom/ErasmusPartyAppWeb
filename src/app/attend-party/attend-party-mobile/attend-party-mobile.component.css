@@ -2,4 +2,15 @@
     margin-top: 10%;
 }
 
+#nationalitiesList{ 
+    text-align: center;
+}
 
+#nationalitiesScroll{ 
+    height: 300px;
+    overflow-y: scroll;
+}
+
+.my-card-text{ 
+    font-size: small;
+}

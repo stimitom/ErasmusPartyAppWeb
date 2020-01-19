@@ -12,10 +12,10 @@
             </div>
         </div>
         <div class="row no-gutters">
-            <div class="col-7">
-                <p class="card-text" *ngFor="let weekday of venueToShow?.openingHours">{{ weekday }}</p>
+            <div class="col-8">
+                <div class="my-card-text" *ngFor="let weekday of venueToShow?.openingHours">{{ weekday }}</div>
             </div>
-            <div class="col-5 text-center">
+            <div class="col-4 text-center">
                 <p class="card-text">
                     {{ venueToShow?.address }}
                 </p>
@@ -32,15 +32,21 @@
             </div>
         </div>
         <hr>
-        <div style="text-align: center;" *ngIf="venueToShow?.numberOfAttendees !== 0; else noGuestsYet">
+        <div id="nationalitiesList" *ngIf="venueToShow?.numberOfAttendees !== 0; else noGuestsYet">
             <h4>{{ venueToShow?.numberOfAttendees }} </h4>
             <h5>Guests from:</h5>
+            <!-- Nationalities Cards -->
+            <div *ngIf="venueToShow.numberOfAttendees > 5; else smallList"  id="nationalitiesScroll">
+                <app-nationality-card *ngFor="let nationalityEl of nationalitiesList" [nationality]="nationalityEl">
+                </app-nationality-card>
+            </div>
+            <ng-template #smallList>
+                <app-nationality-card *ngFor="let nationalityEl of nationalitiesList" [nationality]="nationalityEl">
+                </app-nationality-card>
+            </ng-template>
         </div>
         <ng-template #noGuestsYet>
             <h5>Be the first one to attend!<br /></h5>
         </ng-template>
-        <!-- Nationalities Cards -->
-        <app-nationality-card *ngFor="let nationalityEl of nationalitiesList" [nationality]="nationalityEl">
-        </app-nationality-card>
     </div>
 </div>

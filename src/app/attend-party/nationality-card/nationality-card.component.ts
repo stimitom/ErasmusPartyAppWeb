@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { ResponsiveService } from 'src/app/shared/responsive.service';
 
 @Component({
   selector: 'app-nationality-card',
@@ -8,12 +9,22 @@ import { Component, OnInit, Input } from '@angular/core';
 export class NationalityCardComponent implements OnInit {
   @Input() nationality: string;
   flagIconPath: string;
+  public isMobile: boolean; 
 
-  constructor() { }
+  constructor(private responsiveService: ResponsiveService) { }
 
   ngOnInit() {
     this.setFlagIcon();  
+    this.onResize()
+    this.responsiveService.checkWidth(); 
   }
+
+  onResize() {
+    this.responsiveService.getMobileStatus().subscribe(isMobile => {
+      this.isMobile = isMobile;
+    });
+  }
+
 
   setFlagIcon() {    
     switch (this.nationality) {

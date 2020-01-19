@@ -63,7 +63,8 @@ export class AttendPartyMobileComponent implements OnInit {
     ngOnInit(){
       this.checkIfScreenExpanded(); 
       this.setFreshComponent();
-      this.setImagePath();  
+      this.setImagePath(); 
+      this.setNationaltiesList();  
     }
 
 

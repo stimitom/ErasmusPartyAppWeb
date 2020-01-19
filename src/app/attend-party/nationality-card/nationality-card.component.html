@@ -1,10 +1,28 @@
-<div class="card mb-3">
-    <div class="row no-gutters">
-        <div class="col-1 col-md-1">
-            <img src="{{ flagIconPath }}" class="card-img flag-img" alt="flag icon">
-        </div>
-        <div class="col-11 col-md-11">
-            <p class="card-text my-nationality-text">{{ nationality }}</p>
+<!-- Desktop -->
+<div id="nationality-card-desktop" *ngIf="!isMobile">
+    <div class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col-1 col-md-1">
+                <img src="{{ flagIconPath }}" class="card-img flag-img" alt="flag icon">
+            </div>
+            <div class="col-11 col-md-11">
+                <p class="card-text my-nationality-text">{{ nationality }}</p>
+            </div>
         </div>
     </div>
 </div>
+
+<!-- Mobile -->
+<div id="nationality-card-mobile" *ngIf="isMobile">
+    <div class="card mb-3">
+        <div class="row no-gutters">
+            <div class="col-1 col-md-1">
+                <img src="{{ flagIconPath }}" class="img-responsive flag-img-mobile" alt="flag icon">
+            </div>
+            <div class="col-11 col-md-11">
+                <p class="card-text my-nationality-text-mobile">{{ nationality }}</p>
+            </div>
+        </div>
+    </div>
+</div>
+

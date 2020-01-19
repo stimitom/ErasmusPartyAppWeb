@@ -1,0 +1,8 @@
+#nationalitiesList{ 
+    text-align: center;
+}
+
+#nationalitiesScroll{ 
+     height: 300px;
+    overflow-y: scroll;
+}
