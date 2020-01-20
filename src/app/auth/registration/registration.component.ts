@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { AuthService } from 'src/app/shared/auth.service';
 
 @Component({
@@ -19,16 +20,17 @@ export class RegistrationComponent implements OnInit {
     })
   }
 
-  checkPassword(frm): boolean{ 
+  checkPassword(): boolean{ 
     // console.log("passwords match: " +
     //  frm.value.password === frm.value.repeatPassword); 
     
      return true; 
   }
 
-  createUser(frm){ 
+  createUser(frm: NgForm){ 
     this.auth.createUser(frm.value); 
   }
+
   cityList: string[] = [
     "Kaunas,LT"
   ];
