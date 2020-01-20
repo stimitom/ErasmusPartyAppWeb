@@ -20,13 +20,6 @@ export class RegistrationComponent implements OnInit {
     })
   }
 
-  checkPassword(): boolean{ 
-    // console.log("passwords match: " +
-    //  frm.value.password === frm.value.repeatPassword); 
-    
-     return true; 
-  }
-
   createUser(frm: NgForm){ 
     this.auth.createUser(frm.value); 
   }
