@@ -8,10 +8,6 @@
             </div>
             <div class="card-body">
                 <form #userRegForm="ngForm" (ngSubmit)="createUser(userRegForm)">
-                    <!-- Error Template -->
-                    <div class="col-4 mx-auto alert alert-danger" *ngIf="authError">
-                        {{ auth.error?.message }}
-                    </div>
                     <!-- Actual Form -->
                     <div class="form-group">
                         <input ngModel #email="ngModel" required email name="email" type="email" class="form-control"
